@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,39 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lato:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!--
-=======================================================
-  EARNORA – WORDPRESS-COMPATIBLE LANDING PAGE
-  White & Pink Theme | Venmo Corrected
-=======================================================
-  HOW TO USE IN WORDPRESS:
-  ─────────────────────────
-  OPTION A – Custom Page Template (Recommended):
-    1. Upload this file to your theme folder as:
-       /wp-content/themes/YOUR-THEME/earnora-template.php
-    2. Add this line at the very top (before <!DOCTYPE html>):
-       <?php /* Template Name: Earnora Landing */ ?>
-    3. WordPress Admin → Pages → Add New
-    4. Set Page Template to "Earnora Landing" → Publish
-
-  OPTION B – Full-Width Page with HTML Block:
-    1. Create a new WordPress Page (Full Width template)
-    2. Add a "Custom HTML" block
-    3. Paste content between WP BODY START and WP BODY END
-    4. Add the <style> block to Appearance → Customize → Additional CSS
-
-  OPTION C – Elementor / Divi / Beaver Builder:
-    1. Full-width blank page → HTML widget
-    2. Paste body content, add CSS to builder's custom CSS panel
-
-  NOTES:
-  • CSS scoped under #earnora-page — no theme conflicts
-  • JS wrapped in IIFE — no jQuery/global scope conflicts
-  • Nav hidden by default (WP theme nav shows instead)
-    Remove display:none from #earnora-page .ean-nav to show it
-=======================================================
--->
 
 <style>
 /* =====================================================
@@ -60,7 +26,6 @@
   background: #FFF5F8;
   overflow-x: hidden;
 
-  /* ── Pink Theme Variables ── */
   --ean-pink:        #E91E8C;
   --ean-pink-dark:   #C0156F;
   --ean-pink-light:  #FFE8F4;
@@ -94,9 +59,9 @@
 #earnora-page a  { text-decoration: none; }
 #earnora-page ul { list-style: none; padding: 0; margin: 0; }
 
-/* ── NAV (hidden – WP theme nav shows) ── */
+/* ── NAV ── */
 #earnora-page .ean-nav {
-  display: none; /* ← set to block to show Earnora nav */
+  display: none;
   position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(12px);
@@ -129,33 +94,219 @@
   transform: translateY(-1px);
 }
 
-/* ── HERO ── */
+/* ────────────────────────────────────────────────────
+   BACKGROUND IMAGE SECTIONS
+──────────────────────────────────────────────────── */
+
+/* Hero – money/rewards lifestyle */
 #earnora-page .ean-hero-wrap {
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F7 45%, #F8E8FF 100%);
-  padding: 60px 5% 70px;
-  border-bottom: 1px solid var(--ean-border);
   position: relative;
   overflow: hidden;
+  padding: 60px 5% 70px;
+  border-bottom: 1px solid var(--ean-border);
 }
 #earnora-page .ean-hero-wrap::before {
   content: '';
-  position: absolute; top: -80px; right: -80px;
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(233,30,140,0.08) 0%, transparent 70%);
-  border-radius: 50%; pointer-events: none;
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0.07;
+  z-index: 0;
 }
 #earnora-page .ean-hero-wrap::after {
   content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(255,240,247,0.94) 45%, rgba(248,232,255,0.92) 100%);
+  z-index: 0;
+}
+/* floating orbs */
+#earnora-page .ean-hero-orb1 {
+  position: absolute; top: -80px; right: -80px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(233,30,140,0.10) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none; z-index: 1;
+}
+#earnora-page .ean-hero-orb2 {
   position: absolute; bottom: -60px; left: -60px;
   width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(147,51,234,0.07) 0%, transparent 70%);
-  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(147,51,234,0.08) 0%, transparent 70%);
+  border-radius: 50%; pointer-events: none; z-index: 1;
 }
+
 #earnora-page .ean-hero {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-  position: relative; z-index: 1;
+  position: relative; z-index: 2;
 }
+
+/* ── How It Works – bg image ── */
+#earnora-page .ean-section-how-bg {
+  position: relative; overflow: hidden;
+}
+#earnora-page .ean-section-how-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: 0;
+}
+#earnora-page .ean-section-how-bg .ean-w { position: relative; z-index: 1; }
+
+/* ── CTA section – bg image ── */
+#earnora-page .ean-cta-section {
+  position: relative; overflow: hidden;
+  padding: 80px 5%; text-align: center;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F7 50%, #F5E8FF 100%);
+}
+#earnora-page .ean-cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: 0;
+}
+#earnora-page .ean-cta-section > * { position: relative; z-index: 1; }
+
+/* ── Offer wall section – bg image ── */
+#earnora-page .ean-offerwall-section {
+  padding: 72px 5%;
+  position: relative; overflow: hidden;
+}
+#earnora-page .ean-offerwall-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.05;
+  z-index: 0;
+}
+#earnora-page .ean-offerwall-section::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,245,248,0.96) 0%, rgba(248,232,255,0.96) 100%);
+  z-index: 0;
+}
+#earnora-page .ean-offerwall-section .ean-w { position: relative; z-index: 1; }
+
+/* ── Categories section – subtle bg ── */
+#earnora-page .ean-section-cats {
+  position: relative; overflow: hidden;
+}
+#earnora-page .ean-section-cats::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.04;
+  z-index: 0;
+}
+#earnora-page .ean-section-cats .ean-w { position: relative; z-index: 1; }
+
+/* ── Reviews section – subtle bg ── */
+#earnora-page .ean-section-alt {
+  position: relative; overflow: hidden;
+  background: var(--ean-white);
+}
+#earnora-page .ean-section-alt::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.03;
+  z-index: 0;
+}
+#earnora-page .ean-section-alt .ean-w { position: relative; z-index: 1; }
+
+/* ────────────────────────────────────────────────────
+   SCROLL REVEAL ANIMATIONS
+──────────────────────────────────────────────────── */
+
+/* Base state – hidden before reveal */
+.ean-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.ean-reveal.ean-reveal--left {
+  transform: translateX(-45px);
+}
+.ean-reveal.ean-reveal--right {
+  transform: translateX(45px);
+}
+.ean-reveal.ean-reveal--scale {
+  transform: scale(0.92) translateY(20px);
+}
+.ean-reveal.ean-reveal--zoom {
+  transform: scale(0.85);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+              transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Visible state – triggered by JS */
+.ean-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered children */
+.ean-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1),
+              transform 0.55s cubic-bezier(0.22,1,0.36,1);
+}
+.ean-stagger.is-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.ean-stagger.is-visible > *:nth-child(2) { transition-delay: 0.13s; }
+.ean-stagger.is-visible > *:nth-child(3) { transition-delay: 0.21s; }
+.ean-stagger.is-visible > *:nth-child(4) { transition-delay: 0.29s; }
+.ean-stagger.is-visible > *:nth-child(5) { transition-delay: 0.37s; }
+.ean-stagger.is-visible > *:nth-child(6) { transition-delay: 0.45s; }
+.ean-stagger.is-visible > *:nth-child(7) { transition-delay: 0.53s; }
+.ean-stagger.is-visible > *:nth-child(8) { transition-delay: 0.61s; }
+.ean-stagger.is-visible > *:nth-child(9) { transition-delay: 0.69s; }
+.ean-stagger.is-visible > *:nth-child(10){ transition-delay: 0.77s; }
+.ean-stagger.is-visible > *:nth-child(11){ transition-delay: 0.85s; }
+.ean-stagger.is-visible > *:nth-child(12){ transition-delay: 0.93s; }
+.ean-stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Section slide-in dividers */
+.ean-section-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--ean-pink), var(--ean-purple), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.9s cubic-bezier(0.22,1,0.36,1);
+}
+.ean-section-divider.is-visible {
+  transform: scaleX(1);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .ean-reveal, .ean-stagger > *, .ean-section-divider {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ────────────────────────────────────────────────────
+   REST OF ORIGINAL CSS (unchanged)
+──────────────────────────────────────────────────── */
+
 #earnora-page .ean-hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; border: 2px solid var(--ean-pink-light);
@@ -208,8 +359,6 @@
   background: var(--ean-pink-soft) !important; border-color: var(--ean-pink);
   transform: translateY(-2px); color: var(--ean-pink-dark) !important;
 }
-
-/* ── LIVE STATS BAR ── */
 #earnora-page .ean-live-stats-bar {
   display: flex; background: var(--ean-white); border-radius: 18px;
   box-shadow: 0 4px 24px rgba(233,30,140,0.10);
@@ -232,8 +381,6 @@
   font-size: 0.68rem; color: var(--ean-green); font-weight: 700;
   font-family: 'Nunito', sans-serif; display: block;
 }
-
-/* ── HERO VISUAL ── */
 #earnora-page .ean-hero-visual { position: relative; }
 #earnora-page .ean-hero-card {
   background: var(--ean-white); border-radius: 24px; padding: 1.5rem;
@@ -286,8 +433,6 @@
 }
 #earnora-page .ean-etb-label { font-size: 0.82rem; color: #fff; font-weight: 600; opacity: 0.92; }
 #earnora-page .ean-etb-val { font-family: 'Nunito', sans-serif; font-weight: 900; color: #fff; font-size: 1.15rem; }
-
-/* ── SECTIONS ── */
 #earnora-page .ean-section { padding: 72px 5%; }
 #earnora-page .ean-w { max-width: 1200px; margin: 0 auto; }
 #earnora-page .ean-sec-tag {
@@ -299,8 +444,6 @@
 #earnora-page .ean-sec-title { font-size: clamp(1.7rem,2.8vw,2.5rem); font-weight: 900; color: var(--ean-text); margin-bottom: 0.6rem; }
 #earnora-page .ean-sec-title em { font-style: normal; color: var(--ean-pink); }
 #earnora-page .ean-sec-sub { color: var(--ean-text2); font-size: 0.97rem; max-width: 520px; margin-bottom: 2.5rem; }
-
-/* ── OFFER TYPES ── */
 #earnora-page .ean-offer-types { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 1rem; }
 #earnora-page .ean-offer-type {
   background: var(--ean-white); border: 2px solid var(--ean-border);
@@ -320,18 +463,10 @@
   font-size: 0.62rem; font-weight: 800; padding: 3px 10px; border-radius: 50px;
   display: inline-block; margin-top: 6px; font-family: 'Nunito', sans-serif;
 }
-
-/* ── OFFER WALL ── */
-#earnora-page .ean-offerwall-section {
-  padding: 72px 5%;
-  background: linear-gradient(135deg, #FFF5F8 0%, #F8E8FF 100%);
-}
 #earnora-page .ean-offer-wall-wrap {
   background: var(--ean-white); border-radius: 22px; padding: 2rem;
   min-height: 420px; box-shadow: var(--ean-shadow-lg); border: 1.5px solid var(--ean-border);
 }
-
-/* ── HOW IT WORKS ── */
 #earnora-page .ean-guide-steps { display: grid; grid-template-columns: 1fr; gap: 0.9rem; max-width: 680px; }
 #earnora-page .ean-guide-step {
   display: flex; gap: 1.2rem; align-items: flex-start;
@@ -350,8 +485,6 @@
 }
 #earnora-page .ean-guide-step h4 { font-family: 'Nunito', sans-serif; font-size: 0.95rem; font-weight: 800; margin-bottom: 0.2rem; color: var(--ean-text); }
 #earnora-page .ean-guide-step p  { font-size: 0.83rem; color: var(--ean-text2); }
-
-/* ── PARTNERS ── */
 #earnora-page .ean-partners-strip {
   background: var(--ean-white); border-top: 1px solid var(--ean-border);
   border-bottom: 1px solid var(--ean-border); padding: 2.5rem 5%;
@@ -374,8 +507,6 @@
 }
 #earnora-page .ean-partner-logo { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 900; margin-bottom: 0.25rem; color: var(--ean-text); display: block; }
 #earnora-page .ean-partner-tag  { font-size: 0.62rem; color: var(--ean-muted); font-weight: 600; }
-
-/* ── TICKER ── */
 #earnora-page .ean-ticker-wrap {
   background: linear-gradient(135deg, var(--ean-pink), #C026D3);
   border-radius: 22px; padding: 2.2rem 2rem;
@@ -385,8 +516,6 @@
 #earnora-page .ean-ticker-item { text-align: center; }
 #earnora-page .ean-ticker-val  { font-family: 'Nunito', sans-serif; font-size: 2rem; font-weight: 900; color: #fff; display: block; }
 #earnora-page .ean-ticker-label { font-size: 0.7rem; color: rgba(255,255,255,0.82); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; font-family: 'Nunito', sans-serif; }
-
-/* ── CATEGORIES ── */
 #earnora-page .ean-cats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 0.7rem; }
 #earnora-page .ean-cat-pill {
   background: var(--ean-white); border: 2px solid var(--ean-border);
@@ -399,9 +528,6 @@
   border-color: var(--ean-pink); color: var(--ean-pink) !important;
   background: var(--ean-pink-light); box-shadow: 0 3px 14px rgba(233,30,140,0.12);
 }
-
-/* ── REVIEWS ── */
-#earnora-page .ean-section-alt { background: var(--ean-white); }
 #earnora-page .ean-reviews-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.1rem; }
 #earnora-page .ean-review-card {
   background: var(--ean-pink-soft); border: 1.5px solid var(--ean-border);
@@ -424,12 +550,6 @@
 #earnora-page .ean-tp-row       { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
 #earnora-page .ean-tp-badge     { display: inline-flex; align-items: center; gap: 7px; background: #00b67a; border-radius: 8px; padding: 8px 16px; font-size: 0.8rem; color: #fff; font-weight: 800; font-family: 'Nunito', sans-serif; }
 #earnora-page .ean-tp-sub       { font-size: 0.83rem; color: var(--ean-muted); font-weight: 600; }
-
-/* ── CTA ── */
-#earnora-page .ean-cta-section {
-  padding: 80px 5%; text-align: center;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F7 50%, #F5E8FF 100%);
-}
 #earnora-page .ean-cta-box {
   max-width: 680px; margin: 0 auto; background: var(--ean-white);
   border-radius: 28px; padding: 3rem 2rem;
@@ -437,8 +557,6 @@
 }
 #earnora-page .ean-cta-box h2 { font-size: clamp(1.7rem,2.8vw,2.4rem); font-weight: 900; color: var(--ean-text); margin-bottom: 0.8rem; }
 #earnora-page .ean-cta-box p  { color: var(--ean-text2); margin-bottom: 1.8rem; font-size: 0.97rem; }
-
-/* ── FOOTER ── */
 #earnora-page .ean-footer { background: #1D0A22; color: #fff; padding: 3rem 5% 2rem; }
 #earnora-page .ean-footer-inner { max-width: 1200px; margin: 0 auto; }
 #earnora-page .ean-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
@@ -455,11 +573,9 @@
 #earnora-page .ean-footer-links a { color: rgba(255,255,255,0.35); font-size: 0.78rem; text-decoration: none !important; }
 #earnora-page .ean-footer-links a:hover { color: var(--ean-rose) !important; }
 
-/* ── ANIMATIONS ── */
 @keyframes ean-fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 #earnora-page .ean-fade-in { opacity: 0; animation: ean-fadeUp 0.6s ease forwards; }
 
-/* ── RESPONSIVE ── */
 @media(max-width:900px){
   #earnora-page .ean-hero { grid-template-columns: 1fr; }
   #earnora-page .ean-hero-visual { display: none; }
@@ -478,10 +594,9 @@
 </head>
 <body>
 
-<!-- ======================== WP BODY START ======================== -->
 <div id="earnora-page">
 
-  <!-- NAV (hidden — WP theme nav shows; remove display:none to enable) -->
+  <!-- NAV -->
   <nav class="ean-nav">
     <div class="ean-nav-inner">
       <a href="#" class="ean-logo">Earn<span>ora</span></a>
@@ -491,19 +606,21 @@
         <li><a href="#ean-rewards">Rewards</a></li>
         <li><a href="#ean-reviews">Reviews</a></li>
       </ul>
-      <a href="https://singingfiles.com/1895970" target="_blank" class="ean-nav-cta">🎁 Start Earning Free</a>
+      <a href="https://playabledownload.com/1895208" target="_blank" class="ean-nav-cta">🎁 Start Earning Free</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="ean-hero-wrap">
+    <div class="ean-hero-orb1"></div>
+    <div class="ean-hero-orb2"></div>
     <div class="ean-hero">
       <div class="ean-fade-in" style="animation-delay:0.05s">
         <div class="ean-hero-badge"><span class="ean-live-dot"></span> Live Now — Join Free &amp; Earn Instantly</div>
         <h1>Earn Free <em>Gift Cards</em> &amp;<br><strong>Cash Rewards</strong> Online</h1>
         <p class="ean-hero-sub">Complete surveys, install apps, submit your email — get free Amazon gift cards, Cash App, Venmo &amp; cashback on shopping, beauty, food and more.</p>
         <div class="ean-hero-btns">
-          <a href="https://singingfiles.com/1895970" target="_blank" class="ean-btn-primary">🎁 Claim Free Reward</a>
+          <a href="https://playabledownload.com/1895208" target="_blank" class="ean-btn-primary">🎁 Claim Free Reward</a>
           <a href="#ean-how" class="ean-btn-secondary">📋 See How It Works</a>
         </div>
         <div class="ean-live-stats-bar">
@@ -529,7 +646,7 @@
       <div class="ean-hero-visual ean-fade-in" style="animation-delay:0.2s">
         <div class="ean-notif-float">
           <div class="ean-nav-ava">JL</div>
-          <div>James just earned <b>$25.00</b> Amazon gift card 🎉</div>
+          <div>James just earned <b>$250.00</b> Amazon gift card 🎉</div>
         </div>
         <div class="ean-hero-card">
           <div class="ean-hc-header">
@@ -537,23 +654,23 @@
             <div class="ean-free-badge">✓ 100% Free</div>
           </div>
           <div class="ean-reward-grid">
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">🛒</span><span class="ean-ri-val">$25</span><span class="ean-ri-name">Amazon</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">🛒</span><span class="ean-ri-val">$250</span><span class="ean-ri-name">Amazon</span>
             </a>
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">💸</span><span class="ean-ri-val">$10</span><span class="ean-ri-name">Cash App</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">💸</span><span class="ean-ri-val">$750</span><span class="ean-ri-name">Cash App</span>
             </a>
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">💙</span><span class="ean-ri-val">$10</span><span class="ean-ri-name">Venmo</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">💙</span><span class="ean-ri-val">$100</span><span class="ean-ri-name">Venom</span>
             </a>
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">🍕</span><span class="ean-ri-val">$15</span><span class="ean-ri-name">Food</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">🍕</span><span class="ean-ri-val">$150</span><span class="ean-ri-name">Food</span>
             </a>
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">💄</span><span class="ean-ri-val">$20</span><span class="ean-ri-name">Beauty</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">💄</span><span class="ean-ri-val">$250</span><span class="ean-ri-name">Beauty</span>
             </a>
-            <a href="https://singingfiles.com/1895970" target="_blank" class="ean-reward-item">
-              <span class="ean-ri-icon">🏡</span><span class="ean-ri-val">$30</span><span class="ean-ri-name">Home</span>
+            <a href="https://playabledownload.com/1895208" target="_blank" class="ean-reward-item">
+              <span class="ean-ri-icon">🏡</span><span class="ean-ri-val">$350</span><span class="ean-ri-name">Home</span>
             </a>
           </div>
           <div class="ean-earnings-today-bar">
@@ -568,50 +685,56 @@
   <!-- WHAT YOU CAN EARN -->
   <section id="ean-rewards" class="ean-section">
     <div class="ean-w">
-      <div class="ean-sec-tag">What You Can Earn</div>
-      <h2 class="ean-sec-title">Every Way to Get <em>Rewarded</em></h2>
-      <p class="ean-sec-sub">From quick surveys to app installs — pick what works for you and earn free gift cards immediately.</p>
-      <div class="ean-offer-types">
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
-          <span class="ean-ot-icon">📋</span><h4>Complete Surveys</h4><p>Share opinions &amp; earn cash</p><span class="ean-ot-badge">Up to $5 each</span>
+      <div class="ean-sec-tag ean-reveal">What You Can Earn</div>
+      <h2 class="ean-sec-title ean-reveal" style="transition-delay:0.08s">Every Way to Get <em>Rewarded</em></h2>
+      <p class="ean-sec-sub ean-reveal" style="transition-delay:0.14s">From quick surveys to app installs — pick what works for you and earn free gift cards immediately.</p>
+      <div class="ean-offer-types ean-stagger">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
+          <span class="ean-ot-icon">📋</span><h4>Complete Surveys</h4><p>Share opinions &amp; earn cash</p><span class="ean-ot-badge">Up to $50 each</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
-          <span class="ean-ot-icon">🛒</span><h4>Free Amazon</h4><p>Gift cards for daily shopping</p><span class="ean-ot-badge">$10–$100</span>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
+          <span class="ean-ot-icon">🛒</span><h4>Free Amazon</h4><p>Gift cards for daily shopping</p><span class="ean-ot-badge">$75–$750</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
           <span class="ean-ot-icon">💸</span><h4>Cash App Money</h4><p>Instant balance to your account</p><span class="ean-ot-badge">Instant Pay</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
-          <span class="ean-ot-icon">💙</span><h4>Venmo Rewards</h4><p>Redeem points to Venmo</p><span class="ean-ot-badge">Fast Payout</span>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
+          <span class="ean-ot-icon">💙</span><h4>Venom Rewards</h4><p>Redeem points to Venmo</p><span class="ean-ot-badge">Fast Payout</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
-          <span class="ean-ot-icon">📱</span><h4>App Installs</h4><p>Install free apps, get paid</p><span class="ean-ot-badge">$1–$15 each</span>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
+          <span class="ean-ot-icon">📱</span><h4>App Installs</h4><p>Install free apps, get paid</p><span class="ean-ot-badge">$10–$150 each</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-offer-type">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-offer-type">
           <span class="ean-ot-icon">📧</span><h4>Email &amp; Zip Submit</h4><p>Enter info, unlock cash offers</p><span class="ean-ot-badge">Quick &amp; Easy</span>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- SECTION DIVIDER -->
+  <div style="padding: 0 5%;"><div class="ean-section-divider"></div></div>
+
   <!-- OFFER WALL -->
   <div class="ean-offerwall-section" id="ean-offers">
     <div class="ean-w">
-      <div class="ean-sec-tag">Live Offer Wall</div>
-      <h2 class="ean-sec-title" style="margin-bottom:1.4rem">Complete Offers, <em>Earn Instantly</em></h2>
-      <div class="ean-offer-wall-wrap">
+      <div class="ean-sec-tag ean-reveal">Live Offer Wall</div>
+      <h2 class="ean-sec-title ean-reveal" style="margin-bottom:1.4rem;transition-delay:0.08s">Complete Offers, <em>Earn Instantly</em></h2>
+      <div class="ean-offer-wall-wrap ean-reveal ean-reveal--scale" style="transition-delay:0.18s">
         <script type="text/javascript" src="https://trianglerockers.com/script_include.php?id=1898956"></script>
       </div>
     </div>
   </div>
 
+  <!-- SECTION DIVIDER -->
+  <div style="padding: 0 5%;"><div class="ean-section-divider"></div></div>
+
   <!-- HOW IT WORKS -->
-  <section id="ean-how" class="ean-section">
+  <section id="ean-how" class="ean-section ean-section-how-bg">
     <div class="ean-w">
-      <div class="ean-sec-tag">Quick Guide</div>
-      <h2 class="ean-sec-title">Earn in 4 <em>Simple Steps</em></h2>
-      <p class="ean-sec-sub">Getting your first reward takes under 5 minutes. No credit card needed.</p>
-      <div class="ean-guide-steps">
+      <div class="ean-sec-tag ean-reveal">Quick Guide</div>
+      <h2 class="ean-sec-title ean-reveal" style="transition-delay:0.08s">Earn in 4 <em>Simple Steps</em></h2>
+      <p class="ean-sec-sub ean-reveal" style="transition-delay:0.14s">Getting your first reward takes under 5 minutes. No credit card needed.</p>
+      <div class="ean-guide-steps ean-stagger">
         <div class="ean-guide-step">
           <div class="ean-step-num">1</div>
           <div><h4>Click "Claim Your Reward"</h4><p>Access our live reward wall with hundreds of active offers from top brands.</p></div>
@@ -626,37 +749,40 @@
         </div>
         <div class="ean-guide-step">
           <div class="ean-step-num">4</div>
-          <div><h4>Get Your Free Reward</h4><p>Your Amazon gift card, Cash App or Venmo payment is delivered instantly or within 24 hours.</p></div>
+          <div><h4>Get Your Free Reward</h4><p>Your Amazon gift card, Cash App or Venom payment is delivered instantly or within 24 hours.</p></div>
         </div>
       </div>
-      <div style="margin-top:2rem">
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-btn-primary" style="display:inline-flex">🎁 Start Earning Now</a>
+      <div class="ean-reveal" style="margin-top:2rem;transition-delay:0.5s">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-btn-primary" style="display:inline-flex">🎁 Start Earning Now</a>
       </div>
     </div>
   </section>
 
+  <!-- SECTION DIVIDER -->
+  <div style="padding: 0 5%;"><div class="ean-section-divider"></div></div>
+
   <!-- PARTNERS -->
   <div class="ean-partners-strip">
     <div class="ean-partners-inner">
-      <div class="ean-partners-label">Trusted Reward Partners</div>
-      <div class="ean-partners-grid">
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-partner-card">
+      <div class="ean-partners-label ean-reveal">Trusted Reward Partners</div>
+      <div class="ean-partners-grid ean-stagger">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-partner-card">
           <span class="ean-partner-logo"><span style="color:#E91E8C">Swag</span>bucks</span>
           <span class="ean-partner-tag">🏆 Top Rated</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-partner-card">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-partner-card">
           <span class="ean-partner-logo"><span style="color:#22C55E">Inbox</span>Dollars</span>
           <span class="ean-partner-tag">💰 Cash Out</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-partner-card">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-partner-card">
           <span class="ean-partner-logo"><span style="color:#9333EA">Survey</span>Junkie</span>
           <span class="ean-partner-tag">📋 Surveys</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-partner-card">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-partner-card">
           <span class="ean-partner-logo"><span style="color:#F048A8">Prime</span>Opinion</span>
           <span class="ean-partner-tag">⭐ Premium</span>
         </a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-partner-card">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-partner-card">
           <span class="ean-partner-logo"><span style="color:#C026D3">Reward</span>Zone</span>
           <span class="ean-partner-tag">🎁 Gifts</span>
         </a>
@@ -665,24 +791,24 @@
   </div>
 
   <!-- SEO CATEGORIES -->
-  <section class="ean-section" style="padding-top:56px;padding-bottom:56px">
+  <section class="ean-section ean-section-cats" style="padding-top:56px;padding-bottom:56px">
     <div class="ean-w">
-      <div class="ean-sec-tag">Shop &amp; Earn Categories</div>
-      <h2 class="ean-sec-title" style="margin-bottom:0.4rem">Cashback on Everything <em>You Love</em></h2>
-      <p class="ean-sec-sub">Earn cashback and free gift cards across these popular categories.</p>
-      <div class="ean-cats-grid">
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🛒 Online Shopping</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🎁 Gift Cards</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">💰 Cashback</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🍕 Food &amp; Dining</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">💄 Beauty Products</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🏡 Home Decor</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">👗 Fashion</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🎟 Cash Voucher</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">📱 Tech &amp; Apps</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🛍 Promo Codes</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">🎮 Gaming</a>
-        <a href="https://singingfiles.com/1895970" target="_blank" class="ean-cat-pill">✈ Travel Deals</a>
+      <div class="ean-sec-tag ean-reveal">Shop &amp; Earn Categories</div>
+      <h2 class="ean-sec-title ean-reveal" style="margin-bottom:0.4rem;transition-delay:0.08s">Cashback on Everything <em>You Love</em></h2>
+      <p class="ean-sec-sub ean-reveal" style="transition-delay:0.14s">Earn cashback and free gift cards across these popular categories.</p>
+      <div class="ean-cats-grid ean-stagger">
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🛒 Online Shopping</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🎁 Gift Cards</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">💰 Cashback</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🍕 Food &amp; Dining</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">💄 Beauty Products</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🏡 Home Decor</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">👗 Fashion</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🎟 Cash Voucher</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">📱 Tech &amp; Apps</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🛍 Promo Codes</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">🎮 Gaming</a>
+        <a href="https://playabledownload.com/1895208" target="_blank" class="ean-cat-pill">✈ Travel Deals</a>
       </div>
     </div>
   </section>
@@ -690,7 +816,7 @@
   <!-- TICKER -->
   <section style="padding:0 5% 64px">
     <div class="ean-w">
-      <div class="ean-ticker-wrap">
+      <div class="ean-ticker-wrap ean-reveal ean-reveal--scale">
         <div class="ean-ticker-item">
           <span class="ean-ticker-val" id="ean-t1">$1,284,970</span>
           <span class="ean-ticker-label">Total Paid Out</span>
@@ -714,22 +840,22 @@
   <!-- REVIEWS -->
   <section id="ean-reviews" class="ean-section ean-section-alt">
     <div class="ean-w">
-      <div class="ean-sec-tag">User Reviews</div>
-      <h2 class="ean-sec-title" style="margin-bottom:0.4rem">Real People. <em>Real Rewards.</em></h2>
-      <div class="ean-tp-row">
+      <div class="ean-sec-tag ean-reveal">User Reviews</div>
+      <h2 class="ean-sec-title ean-reveal" style="margin-bottom:0.4rem;transition-delay:0.08s">Real People. <em>Real Rewards.</em></h2>
+      <div class="ean-tp-row ean-reveal" style="transition-delay:0.14s">
         <div class="ean-tp-badge">★★★★★ Excellent on Trustpilot</div>
         <span class="ean-tp-sub">4.8 / 5.0 · Over 3,200 verified reviews</span>
       </div>
-      <div class="ean-reviews-grid" id="ean-reviewsGrid"></div>
+      <div class="ean-reviews-grid ean-stagger" id="ean-reviewsGrid"></div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="ean-cta-section">
-    <div class="ean-cta-box">
+    <div class="ean-cta-box ean-reveal ean-reveal--zoom">
       <h2>Ready to Earn Free <em style="color:#E91E8C">Rewards?</em></h2>
       <p>Join thousands of members already earning free gift cards, cashback, and cash vouchers every single day.</p>
-      <a href="https://singingfiles.com/1895970" target="_blank" class="ean-btn-primary" style="display:inline-flex;font-size:1.05rem;padding:16px 38px">🎁 Claim Free Reward Now</a>
+      <a href="https://playabledownload.com/1895208" target="_blank" class="ean-btn-primary" style="display:inline-flex;font-size:1.05rem;padding:16px 38px">🎁 Claim Free Reward Now</a>
       <p style="margin-top:1rem;font-size:0.78rem;color:#B89EC4">No credit card required · Instant rewards · 100% free to join</p>
     </div>
   </section>
@@ -737,7 +863,7 @@
   <!-- FOOTER -->
   <footer class="ean-footer">
     <div class="ean-footer-inner">
-      <div class="ean-footer-grid">
+      <div class="ean-footer-grid ean-stagger">
         <div class="ean-footer-brand">
           <span class="ean-flogo">Earn<span>ora</span></span>
           <p>Your #1 destination for free gift cards, cashback rewards, and cash vouchers. Earn online with surveys, app installs, and more.</p>
@@ -745,31 +871,31 @@
         <div class="ean-footer-col">
           <h4>Earn</h4>
           <ul>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Complete Surveys</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Install Apps</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Email Submit</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Zip Submit</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Watch Videos</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Complete Surveys</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Install Apps</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Email Submit</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Zip Submit</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Watch Videos</a></li>
           </ul>
         </div>
         <div class="ean-footer-col">
           <h4>Rewards</h4>
           <ul>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Amazon Gift Card</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Cash App</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Venmo</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">PayPal</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Cash Vouchers</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Amazon Gift Card</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Cash App</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Venom</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">PayPal</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Cash Vouchers</a></li>
           </ul>
         </div>
         <div class="ean-footer-col">
           <h4>Categories</h4>
           <ul>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Cashback Shopping</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Food Vouchers</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Beauty Products</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Home Decor</a></li>
-            <li><a href="https://singingfiles.com/1895970" target="_blank">Promo Codes</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Cashback Shopping</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Food Vouchers</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Beauty Products</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Home Decor</a></li>
+            <li><a href="https://playabledownload.com/1895208" target="_blank">Promo Codes</a></li>
           </ul>
         </div>
       </div>
@@ -785,11 +911,38 @@
   </footer>
 
 </div>
-<!-- ======================== WP BODY END ======================== -->
 
 <script type="text/javascript">
 (function(){
   'use strict';
+
+  /* ── Scroll Reveal with IntersectionObserver ── */
+  function initScrollReveal() {
+    var opts = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, opts);
+
+    // Section title reveals
+    document.querySelectorAll('#earnora-page .ean-reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Staggered grids
+    document.querySelectorAll('#earnora-page .ean-stagger').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Divider lines
+    document.querySelectorAll('#earnora-page .ean-section-divider').forEach(function(el) {
+      observer.observe(el);
+    });
+  }
 
   /* ── Slot-machine digit roller ── */
   function eanAnimateValue(el,oldStr,newStr,dur){
@@ -870,11 +1023,17 @@
         '<div class="ean-review-text">'+r.text+'</div>';
       gr.appendChild(c);
     });
+    // Re-observe reviews grid after dynamic content inserted
+    var grid = document.getElementById('ean-reviewsGrid');
+    if(grid) { grid.classList.add('ean-stagger'); initScrollReveal(); }
   }
 
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',showReviews);
-  } else { showReviews(); }
+    document.addEventListener('DOMContentLoaded', function(){ showReviews(); initScrollReveal(); });
+  } else {
+    showReviews();
+    initScrollReveal();
+  }
 
 })();
 </script>
